@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { ReportesService } from '../../servicios/reportes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crear-reporte',
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './crear-reporte.component.html',
   styleUrl: './crear-reporte.component.css'
 })
@@ -12,18 +15,7 @@ export class CrearReporteComponent {
 
   crearReporteForm!: FormGroup;
   categorias: string[];
-
-  constructor(private formBuilder: FormBuilder) {
-    this.categorias = [
-      'Mascota Perdida',
-      'Robo',
-      'Alumbrado público',
-      'Huecos en la vía'
-    ];
-    this.crearFormulario();
-  }
-
-  ciudades: string[] = [
+  ciudades: string[] = [    //opcion inicializando fuera del constructor
     'Armenia',
     'Calarcá',
     'Circasia',
@@ -34,33 +26,55 @@ export class CrearReporteComponent {
     'Salento'
   ];
 
+  constructor(
+    private formBuilder: FormBuilder,
+    public reportesService: ReportesService
+  ) {
+    this.categorias = ['Mascota Perdida', 'Robo', 'Alumbrado público', 'Huecos en la vía'];
+    //this.ciudades = ['Armenia', 'Calarcá', 'Circasia', 'Filandia', 'Génova', 'Montenegro', 'Quimbaya', 'Salento'];
+    this.crearFormulario();
+  }
+
   
+
 
   private crearFormulario() {
     this.crearReporteForm = this.formBuilder.group({
-      titulo: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
-      categoria: ['', [Validators.required]],
-      ciudad: ['', [Validators.required]],
-      ubicacion: ['', [Validators.required]],
-      imagen: ['', [Validators.required]],
+      titulo: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      categoria: ['', Validators.required],
+      ciudad: ['', Validators.required],
+      ubicacion: ['', Validators.required],
+      imagen: ['', Validators.required],
     });
-   }
+  }
 
-   public crearReporte() {
-    console.log(this.crearReporteForm.value);
-   }
-   
+  public crearReporte() {
+    if (this.crearReporteForm.invalid) {
+      Swal.fire("Error", "Por favor complete todos los campos.", "error");
+      return;
+    }
 
+    this.reportesService.crear(this.crearReporteForm.value);
+    Swal.fire("Éxito!", "Se ha creado un nuevo reporte.", "success");
+    this.crearReporteForm.reset();
+  }
 
-   public onFileChange(event: any) {
+  /*public onFileChange(event: any) {
     if (event.target.files.length > 0) {
-      const files = event.target.files;
-      const file = files[0];
+      const file = event.target.files[0];
       this.crearReporteForm.get('imagen')?.setValue(file.name);
     }
-   }
-   
+  }*/
 
-   
+
+  public onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      const random = Math.floor(Math.random() * 100);
+      const fakeImageUrl = `https://picsum.photos/300?random=${random}`;
+      this.crearReporteForm.get('imagen')?.setValue(fakeImageUrl);
+    }
+  }
+
+
 }

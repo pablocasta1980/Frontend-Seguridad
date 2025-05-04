@@ -13,15 +13,17 @@
     </div>
    
    
-    <div>
-      <label>Categoría: </label>
-      <select formControlName="categoria">
-          <option value="">Seleccione una categoría</option>
-          @for (item of categorias; track $index) {
-          <option value="{{item}}">{{item}}</option>
-          }
-      </select>
-   </div>
+    
+
+   <div class="col-12 col-sm-6">
+    <label class="form-label">Categoría: </label>
+    <select class="form-select" formControlName="categoria">
+        <option value="">Seleccione una categoría</option>
+        @for (item of categorias; track $index) {
+            <option value="{{item}}">{{item}}</option>
+        }
+    </select>
+ </div>
    
    
    <div>
@@ -49,8 +51,8 @@
    
    
     <!-- <button type="submit">Crear reporte</button> -->
-   <!-- <button type="submit">Crear reporte</button>-->
-    <button type="submit" [disabled]="crearReporteForm.invalid">Crear reporte</button>
+   -- <button type="submit">Crear reporte</button>
+   <!-- <button type="submit" [disabled]="crearReporteForm.invalid">Crear reporte</button>-->
    </form>
 
 
