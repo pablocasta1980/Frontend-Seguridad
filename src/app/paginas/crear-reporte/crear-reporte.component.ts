@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ReportesService } from '../../servicios/reportes.service';
 import { CommonModule } from '@angular/common';
+import { MapaService } from '../../servicios/mapa.service'; // <-- Nueva importación
+
 
 @Component({
   selector: 'app-crear-reporte',
@@ -11,7 +13,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './crear-reporte.component.html',
   styleUrl: './crear-reporte.component.css'
 })
-export class CrearReporteComponent {
+export class CrearReporteComponent implements OnInit{
 
   crearReporteForm!: FormGroup;
   categorias: string[];
@@ -28,12 +30,28 @@ export class CrearReporteComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    public reportesService: ReportesService
+    public reportesService: ReportesService,
+    private mapaService: MapaService //se agreaga mapa de servicios
   ) {
     this.categorias = ['Mascota Perdida', 'Robo', 'Alumbrado público', 'Huecos en la vía'];
     //this.ciudades = ['Armenia', 'Calarcá', 'Circasia', 'Filandia', 'Génova', 'Montenegro', 'Quimbaya', 'Salento'];
     this.crearFormulario();
   }
+
+  ngOnInit(): void {
+    this.mapaService.crearMapa();
+   
+   
+    this.mapaService.agregarMarcador().subscribe((marcador) => {
+      this.crearReporteForm.get('ubicacion')?.setValue({
+        latitud: marcador.lat,
+        longitud: marcador.lng,
+      });
+    });
+   
+   
+   }
+   
 
   
 
