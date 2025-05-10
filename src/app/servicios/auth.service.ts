@@ -1,0 +1,25 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RespuestaDTO } from '../dto/respuesta-dto';
+import { LoginDTO } from '../dto/login-dto';
+
+
+@Injectable({
+ providedIn: 'root'
+})
+export class AuthService {
+
+
+ private authURL = "http://localhost:8081/api/auth";
+
+
+ constructor(private http: HttpClient) { }
+
+ public iniciarSesion(loginDTO: LoginDTO): Observable<RespuestaDTO> {
+  return this.http.post<RespuestaDTO>(`${this.authURL}/login`, loginDTO);
+ }
+
+ 
+}
+
