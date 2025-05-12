@@ -1,0 +1,121 @@
+/* Fondo general con gradiente idéntico al login */
+.fondo-comunidad {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tarjeta con transparencia para mantener coherencia */
+.contenido {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Personas con colores complementarios */
+.personas-comunidad {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.persona svg {
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+/* Ajuste de colores para las personas */
+.persona:nth-child(1) svg circle,
+.persona:nth-child(1) svg path {
+  fill: #6e8efb;
+  stroke: #6e8efb;
+}
+
+.persona:nth-child(2) svg circle,
+.persona:nth-child(2) svg path {
+  fill: #a777e3;
+  stroke: #a777e3;
+}
+
+.persona:nth-child(3) svg circle,
+.persona:nth-child(3) svg path {
+  fill: #8a6efb;
+  stroke: #8a6efb;
+}
+
+/* Notificaciones con color de acento del login */
+.alerta-notificacion {
+  background-color: #ff3860; /* Color de error del login */
+  box-shadow: 0 0 0 6px rgba(255, 56, 96, 0.25);
+}
+
+/* Tipografía ajustada */
+h1 {
+  font-weight: 700;
+  color: #2d3748; /* Texto oscuro similar al login */
+  margin-bottom: 1.2rem;
+  font-size: 2.4rem;
+}
+
+strong {
+  color: #764ba2; /* Color del gradiente */
+}
+
+.lead {
+  font-size: 1.3rem;
+  color: #4a5568; /* Gris azulado similar al login */
+  margin-bottom: 1rem;
+}
+
+.text-muted {
+  color: #718096 !important; /* Texto secundario del login */
+  font-size: 1rem;
+}
+
+/* Botón idéntico al login */
+.btn-comunidad {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1.5rem;
+}
+
+.btn-comunidad:hover {
+  background: linear-gradient(135deg, #5a7df4, #9666d8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animaciones consistentes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes animacion-flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animacion-flotar {
+  animation: animacion-flotar 3s ease-in-out infinite;
+}

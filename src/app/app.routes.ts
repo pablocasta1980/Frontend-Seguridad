@@ -5,11 +5,13 @@ import { RegistroComponent } from './paginas/registro/registro.component';
 import { CrearReporteComponent } from './paginas/crear-reporte/crear-reporte.component';
 import { GestionReportesComponent } from './paginas/gestion-reportes/gestion-reportes.component';
 import { DetalleReporteComponent } from './paginas/detalle-reporte/detalle-reporte.component';
+import { PresentacionComponent } from './paginas/presentacion/presentacion.component';
 
 
 
 export const routes: Routes = [
-   { path: '', component: InicioComponent },
+   { path: '', component: PresentacionComponent },
+   { path: 'inicio', component: InicioComponent },
    { path: 'login', component: LoginComponent },
    { path: 'registro', component: RegistroComponent },
    { path: 'crear-reporte', component: CrearReporteComponent }, 

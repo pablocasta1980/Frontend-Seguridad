@@ -1,74 +1,57 @@
- <div class="container pt-5 pb-5">
-
-
-  <h5 class="mb-0">
-    <i class="fa-solid fa-user-plus me-3"></i>Crear cuenta
-  </h5>
- 
- 
-  <hr />
- 
- 
-  <div class="card-body">
-    <form class="row g-3" [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate="">
-        <!-- Todo lo que va dentro del form -->
-       
-
-        <div class="col-12 col-sm-6">
-          <label class="form-label" >Nombre: </label>
-          <input class="form-control" type="text" formControlName="nombre" />
-         </div>
-         
-         
-         <div class="col-12 col-sm-6">
-          <label class="form-label" >Teléfono: </label>
-          <input class="form-control" type="number" formControlName="telefono" />
-         </div>       
-       
-    
-         <div class="col-12 col-sm-6">
-          <label class="form-label" >Ciudad: </label>
-          <input class="form-control" type="text" formControlName="ciudad" />
-         </div>       
-       
-  
-        <div class="col-12 col-sm-6">
-          <label class="form-label" >Direccion: </label>
-          <input class="form-control" type="text" formControlName="direccion" />
-         </div>      
-               
-
-        <div class="col-12 col-sm-6">
-          <label class="form-label" >Email: </label>
-          <input class="form-control" type="text" formControlName="email" />
-         </div>
-       
-
-        <div class="col-12 col-sm-6">
-          <label class="form-label" >Contraseña: </label>
-          <input class="form-control" type="pasword" formControlName="password" />
-         </div>
-       
+<div class="registro-container">
+  <div class="registro-card">
+    <div class="registro-header">
+      <h1>Crea cuenta</h1>
+      <div class="universidad-logo">
+        <span>Alertas Comunitarias</span>
         
-        <div class="col-12 col-sm-6">
-          <label class="form-label" >Repetir Contraseña: </label>
-          <input class="form-control" type="password" formControlName="confirmaPassword" />
-         </div>
-         
-      
-         <div class="col-12 text-center">
-          <button class="btn btn-primary" type="submit" [disabled]="registroForm.invalid">
-            <i class="fa-solid fa-check me-2"></i>
-            Registrarse
-          </button>
-         </div>
-      
-        @if (registroForm.hasError('passwordsMismatch')) {
-          <div class="alert alert-danger" role="alert" >Las contraseñas no coinciden</div>
-         }
-         
+        <span class="emoji">🏘️</span> 
+      </div>
+    </div>
+
+    <form class="registro-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
+        </div>
+        
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" placeholder="Ingresa tu número telefónico">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ciudad">Ciudad</label>
+          <input type="text" id="ciudad" placeholder="Ingresa tu ciudad">
+        </div>
+        
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" placeholder="Ingresa tu dirección">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Ingresa tu correo electrónico">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="Crea una contraseña">
+        </div>
+        
+        <div class="form-group">
+          <label for="repeat-password">Repetir Contraseña</label>
+          <input type="password" id="repeat-password" placeholder="Repite tu contraseña">
+        </div>
+      </div>
+
+      <button type="submit" class="registro-btn">Registrarse</button>
     </form>
   </div>
- 
- 
- </div>
+</div>

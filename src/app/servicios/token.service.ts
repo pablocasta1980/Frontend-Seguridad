@@ -10,6 +10,9 @@ const TOKEN_KEY = "AuthToken";
  providedIn: 'root'
 })
 export class TokenService {
+  obtenerRol() {
+    throw new Error('Method not implemented.');
+  }
 
 
  constructor(private router: Router) { }
@@ -18,6 +21,8 @@ export class TokenService {
   window.sessionStorage.removeItem(TOKEN_KEY);
   window.sessionStorage.setItem(TOKEN_KEY, token);
  }
+
+
 
  public getToken(): string | null {
   return sessionStorage.getItem(TOKEN_KEY);
@@ -33,7 +38,7 @@ export class TokenService {
 
  public login(token: string) {
   this.setToken(token);
-  this.router.navigate(["/"]);
+  //this.router.navigate(["/"]);
 }
 
 
