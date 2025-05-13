@@ -9,10 +9,7 @@ const TOKEN_KEY = "AuthToken";
 @Injectable({
  providedIn: 'root'
 })
-export class TokenService {
-  obtenerRol() {
-    throw new Error('Method not implemented.');
-  }
+export class TokenService { 
 
 
  constructor(private router: Router) { }
@@ -72,6 +69,18 @@ private decodePayload(token: string): any {
     return values.rol;
   }
   return "";
+ }
+ 
+
+ public getEstado(): string{
+
+  const token = this.getToken();
+  if (token){
+    const values = this.decodePayload(token);
+    return values.estado;
+
+  }
+ return "";
  }
  
  

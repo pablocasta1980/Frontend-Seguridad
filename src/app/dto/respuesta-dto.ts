@@ -1,10 +1,10 @@
 /*export interface RespuestaDTO {
     error: boolean,
-    contenido: any
- }
-*/
+    mensaje: any
+ }*/
 
- export interface RespuestaDTO {
+
+export interface RespuestaDTO {
   error: boolean;
   mensaje: {
     token: string;
