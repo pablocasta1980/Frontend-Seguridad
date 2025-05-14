@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UsuarioService } from '../../servicios/usuario.service';
+import { CrearUsuarioDTO } from '../../dto/crear-usuario-dto';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,7 +16,7 @@ export class RegistroComponent{
 
  registroForm!: FormGroup;
 
- constructor(private formBuilder: FormBuilder) {   
+ constructor(private formBuilder: FormBuilder,private usuarioService: UsuarioService) {   
 
     this.crearFormulario();
 }
@@ -46,11 +49,43 @@ export class RegistroComponent{
    }
    
 
- 
+
 
  public registrar() {
-    console.log(this.registroForm.value);
- }
+   console.log(this.registroForm.value);
+ const crearUsuario = this.registroForm.value as CrearUsuarioDTO;
+
+
+ this.usuarioService.crear(crearUsuario).subscribe({
+   next: (data) => {
+
+
+     Swal.fire({
+       title: 'Éxito',
+       //text: data.contenido,
+       icon: 'success',
+       confirmButtonText: 'Aceptar'
+     });
+
+
+   },
+   error: (error) => {
+
+
+     Swal.fire({
+       title: 'Error',
+       text: error.error.contenido,
+       icon: 'error',
+       confirmButtonText: 'Aceptar'
+     });
+
+
+   },
+ });
+
+
+}
+
    
  
  

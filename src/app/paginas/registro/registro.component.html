@@ -1,57 +1,44 @@
-<div class="registro-container">
-  <div class="registro-card">
-    <div class="registro-header">
-      <h1>Crea cuenta</h1>
-      <div class="universidad-logo">
-        <span>Alertas Comunitarias</span>
-        
-        <span class="emoji">🏘️</span> 
-      </div>
+<form class="registro-form" [formGroup]="registroForm" (ngSubmit)="registrar()">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" formControlName="nombre" placeholder="Ingresa tu nombre completo">
     </div>
 
-    <form class="registro-form">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
-        </div>
-        
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" placeholder="Ingresa tu número telefónico">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="ciudad">Ciudad</label>
-          <input type="text" id="ciudad" placeholder="Ingresa tu ciudad">
-        </div>
-        
-        <div class="form-group">
-          <label for="direccion">Dirección</label>
-          <input type="text" id="direccion" placeholder="Ingresa tu dirección">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Ingresa tu correo electrónico">
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" placeholder="Crea una contraseña">
-        </div>
-        
-        <div class="form-group">
-          <label for="repeat-password">Repetir Contraseña</label>
-          <input type="password" id="repeat-password" placeholder="Repite tu contraseña">
-        </div>
-      </div>
-
-      <button type="submit" class="registro-btn">Registrarse</button>
-    </form>
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" formControlName="telefono" placeholder="Ingresa tu número telefónico">
+    </div>
   </div>
-</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="ciudad">Ciudad</label>
+      <input type="text" id="ciudad" formControlName="ciudad" placeholder="Ingresa tu ciudad">
+    </div>
+
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" formControlName="direccion" placeholder="Ingresa tu dirección">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email" placeholder="Ingresa tu correo electrónico">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" formControlName="password" placeholder="Crea una contraseña">
+    </div>
+
+    <div class="form-group">
+      <label for="repeat-password">Repetir Contraseña</label>
+      <input type="password" id="repeat-password" formControlName="confirmaPassword" placeholder="Repite tu contraseña">
+    </div>
+  </div>
+
+  <button type="submit" class="registro-btn" [disabled]="registroForm.invalid">Registrarse</button>
+</form>
