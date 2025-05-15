@@ -12,6 +12,8 @@ export class AuthService {
 
 
  private authURL = "http://localhost:8081/api/auth";
+ //private authURL = "https://alertasuq-backend.onrender.com/api/auth/login";
+
 
 
  constructor(private http: HttpClient) { }
