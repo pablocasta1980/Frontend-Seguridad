@@ -30,38 +30,7 @@ export class LoginComponent {
     
   }
 
-  
-  
 
-/*public login() {
-  const loginDTO = this.loginForm.value as LoginDTO;
-
-  this.authService.iniciarSesion(loginDTO).subscribe({
-    
-    next: (data) => {
-     // this.tokenService.login(data.contenido);
-     this.tokenService.login(data.mensaje.token);
-      console.log("Token guardado:", this.tokenService.getToken());
-      console.log("Respuesta backend:", data);
-
-      const rol = this.tokenService.getRol();
-      
-
-      console.log("Rol detectado:", rol);
-
-      if (rol === 'ADMINISTRADOR') {
-        this.router.navigate(['/gestion-reportes']);
-      } else if (rol === 'CLIENTE') {
-        this.router.navigate(['/inicio']);
-      } else {
-        Swal.fire('Error', 'Rol no reconocido', 'error');
-      }
-    },
-    error: (error) => {
-      Swal.fire('Error', error.error.contenido || 'Credenciales no válidas', 'error');
-    }
-  });
-}*/
    
 
 public login() {

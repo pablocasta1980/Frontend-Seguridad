@@ -58,23 +58,18 @@ export class RegistroComponent{
 
  this.usuarioService.crear(crearUsuario).subscribe({
    next: (data) => {
-
-
      Swal.fire({
        title: 'Éxito',
-       //text: data.contenido,
+       text: data.mensaje?.mensaje,
+       //text:'Registro exitoso',
        icon: 'success',
        confirmButtonText: 'Aceptar'
      });
-
-
    },
    error: (error) => {
-
-
      Swal.fire({
        title: 'Error',
-       text: error.error.contenido,
+       text: error.error.mensaje,
        icon: 'error',
        confirmButtonText: 'Aceptar'
      });

@@ -7,6 +7,8 @@ import { GestionReportesComponent } from './paginas/gestion-reportes/gestion-rep
 import { DetalleReporteComponent } from './paginas/detalle-reporte/detalle-reporte.component';
 import { PresentacionComponent } from './paginas/presentacion/presentacion.component';
 
+import { GestionUsuarioComponent } from './paginas/gestion-usuario/gestion-usuario.component';
+
 
 
 export const routes: Routes = [
@@ -14,6 +16,9 @@ export const routes: Routes = [
    { path: 'inicio', component: InicioComponent },
    { path: 'login', component: LoginComponent },
    { path: 'registro', component: RegistroComponent },
+
+   { path: 'gestion-usuarios', component: GestionUsuarioComponent },
+
    { path: 'crear-reporte', component: CrearReporteComponent }, 
    { path: "gestion-reportes", component: GestionReportesComponent },
    { path: 'detalle-reporte/:id', component: DetalleReporteComponent },
