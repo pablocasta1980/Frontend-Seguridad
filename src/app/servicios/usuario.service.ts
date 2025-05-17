@@ -12,8 +12,8 @@ import { EditarUsuarioDTO } from '../dto/editar-usuario-dto';
 export class UsuarioService {
 
 
- private usuarioURL = "http://localhost:8081/api/usuarios";
- //private usuarioURL = "https://alertasuq-backend.onrender.com/api/usuarios";
+ //private usuarioURL = "http://localhost:8081/api/usuarios";
+ private usuarioURL = "https://alertasuq-backend.onrender.com/api/usuarios";
 
 
  constructor(private http: HttpClient) { }

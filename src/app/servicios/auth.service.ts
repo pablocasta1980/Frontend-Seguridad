@@ -11,8 +11,8 @@ import { LoginDTO } from '../dto/login-dto';
 export class AuthService {
 
 
- private authURL = "http://localhost:8081/api/auth";
- //private authURL = "https://alertasuq-backend.onrender.com/api/auth/login";
+// private authURL = "http://localhost:8081/api/auth";
+ private authURL = "https://alertasuq-backend.onrender.com/api/auth";
 
 
 
