@@ -24,6 +24,7 @@ export class LoginComponent {
       console.log('Datos enviados:', this.loginForm.value);
       // Aquí llamarías a tu servicio de autenticación
     } else {
+      
       console.log('Formulario inválido');
     }
   }
