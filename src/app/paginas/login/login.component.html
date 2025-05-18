@@ -1,13 +1,35 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-  <div>
-   <label>Email: </label>
-   <input type="email" formControlName="email" />
- </div>
+<div class="container contenedor-login">
+  <h5 class="titulo-login">
+    <i class="fa-solid fa-right-to-bracket me-3"></i>Iniciar sesión
+  </h5>
 
-  <div>
-   <label>Contraseña: </label>
-   <input type="password" formControlName="password" />
- </div>
+  <hr />
 
-  <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
-</form>
+  <div class="card-body">
+    <form class="row g-3" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      
+      <div class="col-12 col-sm-6">
+        <label class="form-label">Email: </label>
+        <input type="email" class="form-control mb-2" formControlName="email" />
+      </div>
+
+      <div class="col-12 col-sm-6 mt-6">
+        <label class="form-label">Contraseña: </label>
+        <input class="form-control" type="password" formControlName="password" />
+      </div>
+
+      <div class="col-12 text-center mt-4">
+        <button
+          class="btn btn-login"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          <i class="fa-solid fa-check me-2"></i>
+          Iniciar sesión
+        </button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
