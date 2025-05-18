@@ -1,54 +1,65 @@
+<div class="container pt-5 pb-5">
+  <!-- Título del formulario -->
+  <h5 class="mb-0">
+    <i class="fa-solid fa-file-circle-plus me-3"></i>Crear reporte
+  </h5>
 
+  <hr />
 
-<div class="container mt-5">
-  <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
-    <h3 class="mb-4 text-center">Crear Reporte</h3>
+  <!-- Contenedor con borde y sombreado -->
+  <div class="card-body">
+    <form class="row g-3" [formGroup]="crearReporteForm" (ngSubmit)="crearReporte()" novalidate>
+      <!-- Campos del formulario -->
 
-    <form [formGroup]="crearReporteForm" (ngSubmit)="crearReporte()" novalidate>
-      
-      <div class="mb-3">
-        <label class="form-label">Título:</label>
-        <input type="text" formControlName="titulo" class="form-control" />
+      <div class="col-12 col-sm-6">
+        <label class="form-label">Título: </label>
+        <input class="form-control" type="text" formControlName="titulo" />
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Descripción:</label>
-        <textarea formControlName="descripcion" class="form-control"></textarea>
+      <div class="col-12 col-sm-6">
+        <label class="form-label">Descripción: </label>
+        <textarea class="form-control" formControlName="descripcion" rows="4"></textarea>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Categoría:</label>
+      <div class="col-12 col-sm-6">
+        <label class="form-label">Categoría: </label>
         <select class="form-select" formControlName="categoria">
-          <option value="">Seleccione una categoría</option>
+          <option value="" disabled selected>Seleccione una categoría</option>
           @for (item of categorias; track $index) {
-            <option value="{{item}}">{{item}}</option>
+          <option value="{{item}}">{{item}}</option>
           }
         </select>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Ciudad:</label>
-        <select formControlName="ciudad" class="form-select">
-          <option value="">Seleccione una ciudad</option>
-          @for (ciudad of ciudades; track $index) {
-            <option [value]="ciudad">{{ciudad}}</option>
+      <div class="col-12 col-sm-6">
+        <label class="form-label">Ciudad: </label>
+        <select class="form-select" formControlName="ciudad">
+          <option value="" disabled selected>Seleccione una ciudad</option>
+          @for (item of ciudades; track $index) {
+          <option value="{{item}}">{{item}}</option>
           }
         </select>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Ubicación:</label>
-        <input type="text" formControlName="ubicacion" class="form-control" />
+      <div class="col-12 col-sm-6">
+        <label class="form-label">Ubicación: </label>
+        <input type="text" class="form-control mb-2" formControlName="ubicacion" />
+        <!-- Mapa -->
+        <div id="mapa"></div>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Imagen reporte:</label>
-        <input type="file" (change)="onFileChange($event)" class="form-control" />
+      <div class="col-12 col-sm-6">
+        <label class="form-label">Imagen del reporte:</label>
+        <input type="file" class="form-control" (change)="onFileChange($event)" />
       </div>
 
-      <button type="submit" class="btn btn-primary w-100" [disabled]="crearReporteForm.invalid">
-        Crear reporte
-      </button>
+      <!-- Botón enviar -->
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-success">
+          <i class="fa-solid fa-paper-plane me-2"></i>
+          Crear reporte
+        </button>
+      </div>
     </form>
   </div>
 </div>
