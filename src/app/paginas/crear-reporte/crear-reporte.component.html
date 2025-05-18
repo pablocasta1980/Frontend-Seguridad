@@ -1,0 +1,58 @@
+<form [formGroup]="crearReporteForm" (ngSubmit)="crearReporte()" novalidate>
+  
+ <div>
+        <label>Título:</label>
+        <input type="text" formControlName="titulo"  />
+</div>
+
+
+ <div>
+   <label>Descripción: </label>
+   <textarea formControlName="descripcion"></textarea>
+ </div>
+
+
+ <div>
+   <label>Categoría: </label>
+   <select formControlName="categoria">
+       <option value="" disabled selected>Seleccione una categoría</option>
+       @for (item of categorias; track $index) {
+       <option value="{{item}}">{{item}}</option>
+       }
+   </select>
+</div>
+
+
+ <div>
+   <label>Ciudad: </label>
+   <select formControlName="ciudad">
+       <option value="" disabled selected>Seleccione una ciudad</option>
+       @for (item of ciudades; track $index) {
+       <option value="{{item}}">{{item}}</option>
+       }
+   </select>
+</div>
+
+ 
+
+
+ <div>
+  <label>Ubicación: </label>
+  <input type="text" formControlName="ubicacion" />
+  <div id="mapa"></div>
+</div>
+
+
+
+      <div>
+   <label>Imagen reporte: </label>
+   <input type="file" (change)="onFileChange($event)" />
+</div>
+
+
+
+
+ <button type="submit">Crear reporte</button>
+
+
+</form>
